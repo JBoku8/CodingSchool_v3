@@ -1,0 +1,53 @@
+/* External stylesheets */
+
+body {
+  /* background-color: aquamarine; */
+}
+h1 {
+  color: coral;
+  font-size: 40px;
+}
+h2 {
+  color: red;
+}
+h3 {
+  color: brown;
+}
+h4 {
+  color: seagreen;
+}
+h5 {
+  color: yellowgreen;
+}
+h6 {
+  color: tomato;
+  font-size: 50px;
+}
+p {
+  /* border-style: dotted;
+    border-width: 4px;
+    border-color: blueviolet; */
+  border: blueviolet 1px solid;
+}
+
+a {
+  color: red;
+}
+
+.color-pink {
+  color: palevioletred;
+}
+
+.color-orange {
+  color: orange;
+}
+
+#paragraph {
+  font-size: 50px;
+  border-color: red;
+}
+
+.paragraph#paragraph {
+  font-size: 30px;
+  border-color: black;
+}

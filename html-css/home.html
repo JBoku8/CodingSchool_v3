@@ -3,35 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>პირველი გვერდი</title>
-
+    <!-- DRY -->
     <style>
+      /* Internal Stylesheet */
       /* გვერდის ძირითადი სტილები */
-      h1 {
-        color: coral;
-        font-size: 40px;
-      }
-      h2 {
-        color: red;
-      }
-      h3 {
-        color: brown;
-      }
-      h4 {
-        color: seagreen;
-      }
-      h5 {
-        color: yellowgreen;
-      }
-      h6 {
-        color: tomato;
-        font-size: 50px;
-      }
-      p {
-        /* border-style: dotted;
-        border-width: 4px;
-        border-color: blueviolet; */
-        border: blueviolet 1px solid;
-      }
     </style>
     <!-- 
         
@@ -43,11 +18,13 @@
         }
         (),[],{}
     -->
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
     <header>
-      <h1>სათაური 1</h1>
+      <h1>Home</h1>
+      <a href="./index.html">Index Page</a>
     </header>
     <h2>სათაური 2</h2>
     <h3>სათაური 3</h3>
