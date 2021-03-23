@@ -31,7 +31,7 @@ p {
 }
 
 a {
-  color: red;
+  color: #444;
 }
 
 .color-pink {
@@ -42,12 +42,36 @@ a {
   color: orange;
 }
 
+/* 
 #paragraph {
   font-size: 50px;
   border-color: red;
-}
+} */
 
-.paragraph#paragraph {
+.paragraph {
   font-size: 30px;
   border-color: black;
+}
+
+.article {
+  font-size: 25px;
+  color: red;
+}
+
+.menu {
+  /* border: 2px dotted #444; */
+  /* border-radius: 10px; */
+}
+
+.menu-item {
+  color: seagreen;
+  font-size: larger;
+}
+
+.menu-link {
+  color: chocolate;
+}
+
+.inner-menu .menu-link {
+  color: red;
 }
