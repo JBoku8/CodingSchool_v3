@@ -22,36 +22,36 @@
 }
 
 .bg-pink,
-.post-item:nth-child(1n + 0) {
+.post-item:nth-child(4n + 1) {
   background-color: #ef5777;
 }
 .bg-periwinkle,
-.post-item:nth-child(2n + 0) {
+.post-item:nth-child(4n + 2) {
   background-color: #575fcf;
 }
 .bg-megaman,
-.post-item:nth-child(3n + 0) {
+.post-item:nth-child(4n + 3) {
   background-color: #4bcffa;
 }
 .bg-mintGreen,
-.post-item:nth-child(4n + 0) {
+.post-item:nth-child(4n + 4) {
   background-color: #0be881;
 }
 
 /* CSS Selector sibling */
-.post-item:nth-child(1n + 0):active + .post-item {
+.post-item:nth-child(4n + 1):active + .post-item {
   background-color: #ef5777;
   transform: rotate(1turn);
 }
-.post-item:nth-child(2n + 0):active + .post-item {
+.post-item:nth-child(4n + 2):active + .post-item {
   background-color: #575fcf;
   transform: scale(2, 2);
 }
-.post-item:nth-child(3n + 0):active + .post-item {
+.post-item:nth-child(4n + 3):active + .post-item {
   background-color: #4bcffa;
   transform: skew(45deg);
 }
-.post-item:nth-child(4n + 0):active + .post-item {
+.post-item:nth-child(4n + 4):active + .post-item {
   background-color: #0be881;
   transform: translate(calc(108% + 2px), 0px);
 }
