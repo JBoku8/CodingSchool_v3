@@ -1,0 +1,49 @@
+.article {
+  box-sizing: border-box;
+  /* border: 2px dashed #555; */
+  width: 49.5%;
+  height: auto;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 2rem;
+  --articleTitleColor: #fd7e14;
+}
+
+.intro-text {
+  font-size: 30px;
+  font-weight: 500;
+  color: red;
+}
+
+.article img {
+  max-width: 300px;
+}
+
+.article .card-title {
+  color: var(--articleTitleColor);
+}
+
+nav {
+  height: auto;
+}
+
+.nav-link.my-link {
+  display: block;
+  line-height: unset;
+  height: 100%;
+  width: 70px;
+  text-align: center;
+  background-color: bisque;
+  text-decoration: none;
+  padding: 20px;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-light .navbar-nav .nav-link.my-link {
+  color: var(--bs-pink);
+}
+
+.my-link:hover {
+  background-color: beige;
+  border-bottom-color: blueviolet;
+}
