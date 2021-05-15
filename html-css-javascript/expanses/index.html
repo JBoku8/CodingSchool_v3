@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager your Expanses.</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mb-3">
+      <h1 class="text-primary fs-1">Manager your Expanses</h1>
+      <a href="../blog.html" class="text-muted fs-3">Go to blog</a>
+    </div>
+
+    <!--
+    საიტი -> ფორმა => ვალიდაცია -> საბმიტი -> ვალიდაცია -> პოსტ მოთხოვნა -> მისამართზე
+    -> მოთხოვნის წაკითხვა -> ვალიდაცია -> ჩაწერა -> პასუხი წარმატებით ჩაიწერა
+    -> საიტის განახლება ახალი ჩანაწერით.
+ -->
+
+    <div class="container">
+      <div class="row border shadow p-4">
+        <h2 class="text-primary">ხარჯის გენერატორი.</h2>
+        <form method="GET" id="expanseForm" onsubmit="expanseFormSubmit(event)">
+          <div class="mb-3">
+            <label for="expanseTitle" class="form-label"
+              >ხარჯის დასახელება</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="expanseTitle"
+              placeholder="ხარჯი"
+              name="expanseTitle"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="expanseAmount" class="form-label">ხარჯის ოდენობა</label>
+            <input
+              type="number"
+              class="form-control"
+              id="expanseAmount"
+              placeholder="თანხა"
+              name="expanseAmount"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="expanseDate" class="form-label">თარიღი</label>
+            <input
+              type="date"
+              class="form-control"
+              id="expanseDate"
+              name="expanseDate"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <button class="btn btn-primary">ხარჯის შექმნა</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
