@@ -16,6 +16,7 @@ const expansesList = [
 ];
 
 let isEditing = false;
+let editItem = null;
 
 const textModes = {
   [false]: {
@@ -38,8 +39,10 @@ function expanseFormSubmit(event) {
 
     expansesList.push(newExpanse);
   } else {
-    // რედაქტირება
-    console.log(expanseTitle.value, +expanseAmount.value, expanseDate.value);
+    const elementIndex = expansesList.findIndex((el) => el.id === editItem);
+    expansesList[elementIndex].amount = +expanseAmount.value;
+    expansesList[elementIndex].title = expanseTitle.value;
+    expansesList[elementIndex].date = expanseDate.value;
   }
 
   renderExpanses();
@@ -52,6 +55,7 @@ function emptyForm() {
   expanseDate.value = "";
 
   isEditing = false;
+  editItem = null;
   submitBtn.textContent = textModes[isEditing].submitBtn;
 }
 function Expanse(title, amount, date) {
@@ -121,6 +125,7 @@ function onExpanseItemEdit(event, itemId) {
   expanseDate.value = element.date;
 
   isEditing = true;
+  editItem = itemId;
   submitBtn.textContent = textModes[isEditing].submitBtn;
 
   addNewExpanseBtn.click();
