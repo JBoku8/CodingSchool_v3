@@ -16,7 +16,10 @@ const expansesList = [
 ];
 
 let isEditing = false;
+<<<<<<< HEAD
 let editItem = null;
+=======
+>>>>>>> master
 
 const textModes = {
   [false]: {
