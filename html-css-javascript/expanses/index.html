@@ -56,6 +56,20 @@
               required
             />
           </div>
+
+          <div class="mb-3">
+            <label for="expanseCategory" class="form-label"
+              >ხარჯის კატეგორია</label
+            >
+            <select
+              class="form-select"
+              aria-label="ხარჯის კატეგორია"
+              id="expanseCategory"
+            >
+              <option selected>--კატეგორიის არჩევა--</option>
+            </select>
+          </div>
+
           <div class="mb-3">
             <label for="expanseAmount" class="form-label">ხარჯის ოდენობა</label>
             <input
@@ -67,6 +81,7 @@
               required
             />
           </div>
+
           <div class="mb-3">
             <label for="expanseDate" class="form-label">თარიღი</label>
             <input
@@ -133,6 +148,8 @@
       </div>
     </div>
 
+    <script src="./js/category.js"></script>
+    <script src="./js/expanse.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>
