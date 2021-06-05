@@ -1,3 +1,5 @@
+const EXPANSE_KEY = "EXPANSE_STORAGE";
+
 class Expanse {
   constructor(title, amount, date, categoryId) {
     this.title = title;
@@ -19,7 +21,18 @@ class Expanse {
   }
 }
 
-const expansesList = [
-  new Expanse("სატესტო ხარჯი 1", 20, "2021-05-02", categoryList[0].id),
-  new Expanse("სატესტო ხარჯი 2", 36, "2021-05-01", categoryList[1].id),
-];
+let expansesList = [];
+
+if (localStorage.getItem(EXPANSE_KEY)) {
+  const readData = JSON.parse(localStorage.getItem(EXPANSE_KEY));
+  expansesList = readData.map(
+    (item) => new Expanse(item.title, item.amount, item.date, item.categoryId)
+  );
+} else {
+  expansesList = [
+    new Expanse("სატესტო ხარჯი 1", 20, "2021-05-02", categoryList[0].id),
+    new Expanse("სატესტო ხარჯი 2", 36, "2021-05-01", categoryList[1].id),
+  ];
+  console.log(expansesList);
+  localStorage.setItem(EXPANSE_KEY, JSON.stringify(expansesList));
+}
