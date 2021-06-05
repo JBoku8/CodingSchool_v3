@@ -127,6 +127,8 @@ function renderExpanses() {
   const average = total ? Math.round(total / expansesList.length) : 0;
 
   averageExpanse.textContent = `${average} ლარი.`;
+
+  localStorage.setItem(EXPANSE_KEY, JSON.stringify(expansesList));
 }
 
 function renderCategoryOptions() {
