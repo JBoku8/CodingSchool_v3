@@ -6,10 +6,13 @@
   "dependencies": {
     "typescript": "^4.3.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc app.ts"
+    "dev": "tsc app.ts",
+    "start": "ts-node app.ts"
   },
   "keywords": [],
   "author": "",
