@@ -1,4 +1,4 @@
-const CATEGORY_KEY = "CATEGORY_STORAGE";
+const CATEGORY_KEY = 'CATEGORY_STORAGE';
 class Category {
   constructor(name) {
     this.name = name;
@@ -6,8 +6,8 @@ class Category {
   }
 
   getExpanses() {
-    console.group("Category@getExpanses");
-    console.log("getExpanses...");
+    console.group('Category@getExpanses');
+    console.log('getExpanses...');
     console.groupEnd();
   }
 }
@@ -19,9 +19,9 @@ if (localStorage.getItem(CATEGORY_KEY)) {
   categoryList = [...readData];
 } else {
   categoryList = [
-    new Category("საოჯახო ტექნიკა"),
-    new Category("კომპიუტერული ტექნიკა"),
-    new Category("ტელევზორი"),
+    new Category('საოჯახო ტექნიკა'),
+    new Category('კომპიუტერული ტექნიკა'),
+    new Category('ტელევზორი'),
   ];
   localStorage.setItem(CATEGORY_KEY, JSON.stringify(categoryList));
 }
