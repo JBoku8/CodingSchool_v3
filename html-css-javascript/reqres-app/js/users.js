@@ -192,10 +192,10 @@ const createUserRow = (user) => {
   editButton.className = 'btn btn-warning';
   editButton.textContent = 'Edit';
 
-  const onSuccessUpdate = (user) => {
-    firstNameTd.textContent = user.first_name;
-    lastNameTd.textContent = user.last_name;
-    emailTd.textContent = user.email;
+  const onSuccessUpdate = (updatedUser) => {
+    firstNameTd.textContent = updatedUser.first_name;
+    lastNameTd.textContent = updatedUser.last_name;
+    emailTd.textContent = updatedUser.email;
     tr.addEventListener('animationend', () => {
       tr.classList.remove('updated');
     });

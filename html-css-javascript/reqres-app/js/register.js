@@ -3,11 +3,11 @@ const signUpForm = document.getElementById('signUpForm');
 signUpForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  //   const emailInput = document.getElementById('email');
+  const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
 
   const regData = {
-    email: 'eve.holt@reqres.in',
+    email: emailInput.value,
     password: passwordInput.value,
   };
 
