@@ -1,8 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hello-world',
-  template: `<h2>Hello World Component</h2>`,
+  templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.scss'],
 })
-export class HelloWorldComponent {}
+export class HelloWorldComponent implements OnInit {
+  @Input() title = '';
+  date = new Date();
+  lowerCaseString = 'lower case string';
+  upperCaseString = 'UPPER CASE STRING';
+  totalPrice = 3241.23;
+
+  ngOnInit() {
+    console.log('ON INIT');
+    console.log(this.date.toString());
+  }
+}

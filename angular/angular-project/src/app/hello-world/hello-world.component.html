@@ -1,0 +1,6 @@
+<h2 *ngIf="title">{{ title }}</h2>
+<h4>{{ lowerCaseString | uppercase }}</h4>
+<h4>{{ upperCaseString | lowercase }}</h4>
+<h4>{{ date | date: 'MMMM d, y' }}</h4>
+<h4>Total Price - {{ totalPrice | currency: 'GBP' }}</h4>
+<h3>Custom Pipe Example - {{ 3 | customPipe: 3 }}</h3>
