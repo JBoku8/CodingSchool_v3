@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="showMessage">
     <app-home></app-home>
   </div>
 
-  <div class="row shadow p-3" hidden>
+  <div class="row shadow p-3">
     <h2 class="text-muted fs-1">{{ getName() }}</h2>
     <h4 [title]="appName">{{ appName }}</h4>
     <h4 *ngIf="showMessage">{{ message }}</h4>
@@ -13,14 +13,21 @@
     </button>
   </div>
 
-  <app-hello-world title="App Component Usage"></app-hello-world>
-
-  <div class="row shadow p-3 mt-4" hidden>
-    <h2 class="fs-1 colorRed">Counter - {{ count }}</h2>
-    <div class="col-12 btn-group">
-      <button class="btn btn-primary" (click)="onAdd()">+</button>
-      <button class="btn btn-info" (click)="onReset()">0</button>
-      <button class="btn btn-danger" (click)="onMinus()">-</button>
-    </div>
+  <div class="row shadow p-3" *ngIf="numbers.length">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        [ngClass]="getNumberClasses(item)"
+        *ngFor="let item of numbers"
+      >
+        {{ item }}
+      </li>
+    </ul>
   </div>
+
+  <!-- <app-hello-world title="App Component Usage"></app-hello-world> -->
+  <app-counter
+    [initialValue]="counterStartValue"
+    (onCountChange)="counterChangeHandler($event)"
+  ></app-counter>
 </div>

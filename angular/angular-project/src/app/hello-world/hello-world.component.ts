@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-hello-world',
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.scss'],
 })
-export class HelloWorldComponent implements OnInit {
+export class HelloWorldComponent implements OnInit, OnDestroy {
   @Input() title = '';
   date = new Date();
   lowerCaseString = 'lower case string';
@@ -15,5 +15,9 @@ export class HelloWorldComponent implements OnInit {
   ngOnInit() {
     console.log('ON INIT');
     console.log(this.date.toString());
+  }
+
+  ngOnDestroy() {
+    console.log('HELLO WORLD DESTROY');
   }
 }
