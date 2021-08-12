@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 
 import { ExponentialStrengthPipe } from './pipes/exponential-Strength';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ExponentialStrengthPipe } from './pipes/exponential-Strength';
     HomeComponent,
     HelloWorldComponent,
     ExponentialStrengthPipe,
+    CounterComponent,
   ],
   imports: [BrowserModule],
   providers: [],

@@ -9,7 +9,8 @@ export class AppComponent {
   appName = 'My Hello World App.';
   message = 'My custom message.';
   showMessage = false;
-  count = 0;
+  counterStartValue: number = 10;
+  numbers = [10];
 
   getName() {
     return 'Angular 12.0 Rocks.';
@@ -19,15 +20,18 @@ export class AppComponent {
     this.showMessage = !this.showMessage;
   }
 
-  onAdd() {
-    this.count += 1;
+  counterChangeHandler(newValue: number) {
+    if (newValue > 10) {
+      this.showMessage = false;
+    } else {
+      this.showMessage = true;
+    }
+    this.numbers.push(newValue);
   }
 
-  onReset() {
-    this.count = 0;
-  }
-
-  onMinus() {
-    this.count -= 1;
-  }
+  getNumberClasses = (item: number) => ({
+    'list-group-item-success': item <= 3,
+    'list-group-item-danger': item === 4,
+    'list-group-item-primary': item > 4,
+  });
 }
