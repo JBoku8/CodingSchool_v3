@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { SignInResponse, SignInData } from './login-form.data';
+import { AuthService } from '../auth.service';
+import { SignInData } from './login-form.data';
 
 @Component({
   selector: 'app-login-form',
@@ -15,28 +15,29 @@ export class LoginFormComponent implements OnInit {
     rememberMe: false,
   };
 
-  constructor() {}
+  constructor(public $authService: AuthService) {}
 
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
     if (form.valid) {
-      // AJAX CALL
-      fetch('https://reqres.in/api/login', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(this.formData),
-      })
-        .then((res: Response) => res.json())
-        .then((data: SignInResponse) => {
-          console.log(data.token);
-        })
-        .catch((error: any) => {
-          console.log(error);
-        });
+      // this.$authService.login(this.formData, {
+      //   onError: (error: Error) => {
+      //     console.log('ON ERROR', error);
+      //   },
+      //   onSuccess: (result: SignInResponse) => {
+      //     console.log('ON SUCCESS', result);
+      //   },
+      // });
+
+      const result = await this.$authService.loginAsync(this.formData);
+      this.$authService.loggedIn = !!result?.token;
+
+      // this.formData = {
+      //   password: '',
+      //   rememberMe: false,
+      //   email: '',
+      // };
     }
   }
 }

@@ -1,6 +1,12 @@
-<h2 *ngIf="title">{{ title }}</h2>
-<h4>{{ lowerCaseString | uppercase }}</h4>
-<h4>{{ upperCaseString | lowercase }}</h4>
-<h4>{{ date | date: 'MMMM d, y' }}</h4>
-<h4>Total Price - {{ totalPrice | currency: 'GBP' }}</h4>
-<h3>Custom Pipe Example - {{ 3 | customPipe: 3 }}</h3>
+<div class="row shadow my-2 py-3">
+  <h2 *ngIf="title">{{ title }}</h2>
+  <div class="col-12" *ngIf="$authService.loggedIn">
+    <h4>{{ lowerCaseString | uppercase }}</h4>
+    <h4>{{ upperCaseString | lowercase }}</h4>
+    <h4>{{ date | date: 'MMMM d, y' }}</h4>
+    <h4>Total Price - {{ totalPrice | currency: 'GBP' }}</h4>
+    <h3>Custom Pipe Example - {{ 3 | customPipe: 3 }}</h3>
+
+    <button class="btn btn-info" (click)="$authService.logOut()">Log Out</button>
+  </div>
+</div>
