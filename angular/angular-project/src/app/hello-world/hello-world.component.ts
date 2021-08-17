@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-hello-world',
@@ -11,6 +12,8 @@ export class HelloWorldComponent implements OnInit, OnDestroy {
   lowerCaseString = 'lower case string';
   upperCaseString = 'UPPER CASE STRING';
   totalPrice = 3241.23;
+
+  constructor(public $authService: AuthService) {}
 
   ngOnInit() {
     console.log('ON INIT');

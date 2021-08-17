@@ -1,4 +1,7 @@
-<div class="row col-8 align-self-center shadow p-0 p-3 bordered">
+<div
+  class="row col-8 align-self-center shadow p-0 p-3 bordered"
+  *ngIf="!$authService.loggedIn"
+>
   <h2 class="text-muted">Sign In</h2>
   <form
     #signInForm="ngForm"
@@ -74,4 +77,11 @@
       Sign In
     </button>
   </form>
+</div>
+
+<div
+  class="row col-8 align-self-center shadow p-0 p-3 bordered"
+  *ngIf="$authService.loggedIn"
+>
+  <h2 class="text-muted text-center">Hello my friend!</h2>
 </div>
