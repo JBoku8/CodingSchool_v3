@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./hello-world.scss'],
 })
 export class HelloWorldComponent implements OnInit, OnDestroy {
-  @Input() title = '';
+  @Input() title = 'Hello Default';
   date = new Date();
   lowerCaseString = 'lower case string';
   upperCaseString = 'UPPER CASE STRING';

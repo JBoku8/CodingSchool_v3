@@ -1,1 +1,16 @@
-<app-hello-world title="Home Component Usage"></app-hello-world>
+<div class="row">
+  <h1 class="text-success">Home Page</h1>
+  <h4 *ngIf="loading">Please wait...</h4>
+  <div class="col-12" *ngIf="posts.length">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let item of posts"
+        style="cursor: pointer"
+        (click)="onPostItemClick(item)"
+      >
+        {{ item.title }}
+      </li>
+    </ul>
+  </div>
+</div>

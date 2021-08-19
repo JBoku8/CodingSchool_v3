@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 
+import { AppRoutingModule } from './app-routing.module';
 import { ExponentialStrengthPipe } from './pipes/exponential-Strength';
 import { CounterComponent } from './counter/counter.component';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,10 @@ import { LoginFormComponent } from './auth/login-form/login-form.component';
     ExponentialStrengthPipe,
     CounterComponent,
     LoginFormComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

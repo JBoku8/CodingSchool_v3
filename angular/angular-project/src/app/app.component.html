@@ -1,35 +1,7 @@
-<div class="container">
-  <!-- <div class="row" *ngIf="showMessage">
-    <app-home></app-home>
-  </div> -->
-
-  <!-- <div class="row shadow p-3">
-    <h2 class="text-muted fs-1">{{ getName() }}</h2>
-    <h4 [title]="appName">{{ appName }}</h4>
-    <h4 *ngIf="showMessage">{{ message }}</h4>
-    <hr />
-    <button class="btn btn-primary" (click)="onClick()">
-      {{ showMessage ? 'Hide' : 'Show' }} Message
-    </button>
-  </div> -->
-
-  <!-- <div class="row shadow p-3" *ngIf="numbers.length">
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        [ngClass]="getNumberClasses(item)"
-        *ngFor="let item of numbers"
-      >
-        {{ item }}
-      </li>
-    </ul>
-  </div> -->
-
-  <app-hello-world title="App Component Usage"></app-hello-world>
-  <!-- <app-counter
-    [initialValue]="counterStartValue"
-    (onCountChange)="counterChangeHandler($event)"
-  ></app-counter> -->
-
-  <app-login-form></app-login-form>
+<div class="container-fluid">
+  <app-header></app-header>
+  <div class="container my-4">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 </div>
