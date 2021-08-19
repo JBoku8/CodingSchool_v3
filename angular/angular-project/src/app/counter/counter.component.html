@@ -1,15 +1,4 @@
 <div class="row shadow p-3 mt-4">
-  <!-- [ngClass]="getClasses()" -->
-
-  <!--
-    [class.colorRed]="count < 0"
-    [class.colorOkay]="count > 0"
-    [class.colorWarning]="count === 0"
-  -->
-  <!--
-    [style.backgroundColor]="bgColor"
-    [style.textDecoration]="decoration"
-   -->
   <h2 class="fs-1" [style]="styles">Counter - {{ count }}</h2>
   <div class="col-12 btn-group">
     <button class="btn btn-primary" (click)="onAdd()">+</button>
