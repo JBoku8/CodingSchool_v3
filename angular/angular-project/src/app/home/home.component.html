@@ -1,6 +1,33 @@
 <div class="row">
   <h1 class="text-success">Home Page</h1>
   <h4 *ngIf="loading">Please wait...</h4>
+  <div class="">
+    <form #filterForm="ngForm" method="GET" action="" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-sm-12">
+          <input
+            type="search"
+            class="form-control"
+            [class.is-invalid]="
+              filterForm.controls['searchTerm'] &&
+              filterForm.controls['searchTerm'].touched &&
+              searchTerm.length < 3
+            "
+            id="searchTerm"
+            name="searchTerm"
+            placeholder="start typing..."
+            autocomplete="off"
+            [(ngModel)]="searchTerm"
+            minlength="3"
+          />
+          <div class="invalid-feedback">Please provide at least 3 characters</div>
+        </div>
+        <!-- <div class="col-sm-2">
+          <button type="submit" class="btn btn-success col-12">Search</button>
+        </div> -->
+      </div>
+    </form>
+  </div>
   <div class="col-12" *ngIf="posts.length">
     <ul class="list-group">
       <li

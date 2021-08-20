@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IPost } from '../common/common.data';
 import { JsonPlaceholderService } from '../common/json-placeholder.service';
 
@@ -8,8 +9,21 @@ import { JsonPlaceholderService } from '../common/json-placeholder.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  loading: boolean = true;
   posts: IPost[] = [];
+  cachedPosts: IPost[] = [];
+  loading: boolean = true;
+
+  private _searchTerm: string = '';
+
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+
+  set searchTerm(value: string) {
+    this._searchTerm = value;
+    this.filterPosts();
+  }
+
   constructor(private jsonPlaceHolderService: JsonPlaceholderService) {}
 
   ngOnInit(): void {
@@ -18,7 +32,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   async loadData() {
     this.posts = await this.jsonPlaceHolderService.getPosts();
+    this.cachedPosts = [...this.posts];
     this.loading = false;
+  }
+
+  filterPosts() {
+    if (this.searchTerm.length > 2) {
+      this.posts = this.cachedPosts.filter((p) =>
+        p.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      // this.loadData();
+      this.posts = [...this.cachedPosts];
+    }
   }
 
   onPostItemClick(item: IPost) {
@@ -28,6 +54,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log('Title:', item.title);
     console.log('Body:', item.body);
     console.groupEnd();
+  }
+
+  onSubmit() {
+    this.filterPosts();
   }
 
   ngOnDestroy(): void {
