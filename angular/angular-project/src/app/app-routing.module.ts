@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
+import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'hello-world',
     component: HelloWorldComponent,
+  },
+  {
+    path: 'todo',
+    component: TodoComponent,
   },
   {
     path: '',

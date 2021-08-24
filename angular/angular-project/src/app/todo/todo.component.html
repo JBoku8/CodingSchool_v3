@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-12">
+    <h2>Todo List</h2>
+  </div>
+
+  <div class="col-12">
+    <form #filterForm="ngForm" method="GET" action="" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-sm-12">
+          <input
+            type="search"
+            class="form-control"
+            [class.is-invalid]="
+              filterForm.controls['searchTerm'] &&
+              filterForm.controls['searchTerm'].touched &&
+              searchTerm.length < 3
+            "
+            id="searchTerm"
+            name="searchTerm"
+            placeholder="start typing..."
+            autocomplete="off"
+            [(ngModel)]="searchTerm"
+            minlength="3"
+          />
+          <div class="invalid-feedback">Please provide at least 3 characters</div>
+        </div>
+
+        <div class="col-sm-12 mt-2">
+          <div class="btn-group" role="group" aria-label="radio button group">
+            <input
+              type="radio"
+              class="btn-check"
+              id="all"
+              name="completed"
+              autocomplete="off"
+              value="all"
+              (change)="onRadioButtonClick('all')"
+            />
+            <label class="btn btn-outline-primary" for="all">All</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              id="isNotCompleted"
+              name="completed"
+              autocomplete="off"
+              value="isNotCompleted"
+              (change)="onRadioButtonClick('isNotCompleted')"
+            />
+            <label class="btn btn-outline-secondary" for="isNotCompleted"
+              >Is not Completed</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              id="completed"
+              name="completed"
+              autocomplete="off"
+              value="completed"
+              (change)="onRadioButtonClick('completed')"
+            />
+            <label class="btn btn-outline-success" for="completed">Completed</label>
+          </div>
+        </div>
+
+        <!-- <div class="col-sm-2">
+            <button type="submit" class="btn btn-success col-12">Search</button>
+          </div> -->
+      </div>
+    </form>
+  </div>
+
+  <div class="col-12 d-flex flex-wrap justify-content-between">
+    <app-todo-card
+      *ngFor="let item of todoList"
+      [todo]="item"
+      (onChange)="onTodoChange($event)"
+    ></app-todo-card>
+  </div>
+</div>

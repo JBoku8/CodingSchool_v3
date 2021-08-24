@@ -1,0 +1,24 @@
+<div
+  class="card mb-3"
+  style="max-width: 18rem"
+  [class.border-success]="todo.completed"
+  [class.border-secondary]="!todo.completed"
+  style="cursor: pointer"
+  *ngIf="todo"
+  (click)="onClick(todo)"
+>
+  <div class="card-header">{{ todo.title }}</div>
+  <div
+    class="card-body"
+    [class.text-secondary]="!todo.completed"
+    [class.text-success]="todo.completed"
+  >
+    <h5 class="card-title">
+      Todo is {{ todo.completed ? 'completed' : 'not completed' }}
+    </h5>
+    <!-- <p class="card-text">
+    Some quick example text to build on the card title and make up the bulk of
+    the card's content.
+  </p> -->
+  </div>
+</div>

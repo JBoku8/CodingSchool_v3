@@ -12,6 +12,8 @@ import { CounterComponent } from './counter/counter.component';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { TodoComponent } from './todo/todo.component';
+import { TodoCardComponent } from './todo/todo-card/todo-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FooterComponent } from './common/footer/footer.component';
     LoginFormComponent,
     HeaderComponent,
     FooterComponent,
+    TodoComponent,
+    TodoCardComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
