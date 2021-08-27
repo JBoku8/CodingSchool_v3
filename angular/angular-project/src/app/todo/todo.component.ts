@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITodo } from './shared/todo';
+import { FindAllArgs, ITodo, TodoStatus } from './shared/todo';
 import { TodoService } from './todo.service';
 
 @Component({
@@ -10,7 +10,9 @@ import { TodoService } from './todo.service';
 export class TodoComponent implements OnInit {
   todoList: ITodo[] = [];
   oldList: ITodo[] = [];
+  private _statusFilter: TodoStatus = 'all';
   private _searchTerm: string = '';
+  private _rangeEnd: number = 10;
 
   get searchTerm() {
     return this._searchTerm;
@@ -26,9 +28,11 @@ export class TodoComponent implements OnInit {
     this.loadData();
   }
 
-  async loadData() {
-    this.oldList = await this.todoService.findAll();
+  async loadData(params: FindAllArgs = { start: 0, end: 10 }) {
+    this.oldList = await this.todoService.findAll(params);
     this.todoList = [...this.oldList];
+
+    this.filterData();
   }
 
   onSearch() {
@@ -37,17 +41,36 @@ export class TodoComponent implements OnInit {
         t.title.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     } else {
-      this.loadData();
+      this.loadData({
+        start: 0,
+        end: this._rangeEnd,
+      });
     }
   }
 
-  onRadioButtonClick(filter: 'completed' | 'isNotCompleted' | 'all') {
-    if (filter === 'completed') {
+  onRadioButtonClick(filter: TodoStatus) {
+    this._statusFilter = filter;
+    this.filterData();
+  }
+
+  onRangeChange(event: any) {
+    this._rangeEnd = event.target.value ? +event.target.value : 10;
+
+    const loadDataParams: FindAllArgs = {
+      start: 0,
+      end: this._rangeEnd,
+    };
+
+    this.loadData(loadDataParams);
+  }
+
+  filterData() {
+    if (this._statusFilter === 'completed') {
       this.todoList = this.oldList.filter((t) => t.completed);
-    } else if (filter === 'isNotCompleted') {
+    } else if (this._statusFilter === 'isNotCompleted') {
       this.todoList = this.oldList.filter((t) => !t.completed);
     } else {
-      this.loadData();
+      this.todoList = [...this.oldList];
     }
   }
 
