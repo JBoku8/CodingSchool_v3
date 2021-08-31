@@ -30,8 +30,9 @@ export class LoginFormComponent implements OnInit {
       //   },
       // });
 
-      const result = await this.$authService.loginAsync(this.formData);
-      this.$authService.loggedIn = !!result?.token;
+      // const result =
+      await this.$authService.loginAsync(this.formData);
+      // this.$authService.loggedIn = !!result?.token;
 
       // this.formData = {
       //   password: '',
