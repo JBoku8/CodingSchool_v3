@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../common/local-storage.service';
+import { AUTH_TOKEN } from '../constants';
 
 import { SignInData, SignInResponse } from './login-form/login-form.data';
 
@@ -13,7 +15,9 @@ interface ServiceHandlers {
 export class AuthService {
   public loggedIn: boolean = false;
 
-  constructor() {}
+  constructor(private storageService: LocalStorageService) {
+    this.loggedIn = this.storageService.exists(AUTH_TOKEN);
+  }
 
   login(credentials: SignInData, handlers: ServiceHandlers) {
     // AJAX CALL
@@ -48,6 +52,8 @@ export class AuthService {
       });
 
       const result: SignInResponse = await response.json();
+      this.storageService.set(AUTH_TOKEN, result.token);
+      this.loggedIn = true;
       return result;
     } catch (error: unknown) {
       return undefined;
@@ -56,5 +62,6 @@ export class AuthService {
 
   logOut() {
     this.loggedIn = false;
+    this.storageService.remove(AUTH_TOKEN);
   }
 }
