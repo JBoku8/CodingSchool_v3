@@ -51,11 +51,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   async loadData() {
-    this.posts = await this.jsonPlaceHolderService.getPosts();
-    this.cachedPosts = [...this.posts];
-    this.loading = false;
-
-    // 8586fc0f4c154e46a7fa9bbd4bb2b54f
+    this.jsonPlaceHolderService.getPostsObservable().subscribe((data) => {
+      this.posts = data;
+      this.cachedPosts = [...this.posts];
+      this.loading = false;
+    });
 
     fetch('https://newsapi.org/v2/top-headlines?sources=techcrunch', {
       headers: {
@@ -63,10 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
     })
       .then((response) => response.json())
-      .then((result: INewsApiResponse) => {
-        // console.log(result.status, result.totalResults);
-        // console.log(result.articles[0].source.name);
-      });
+      .then((result: INewsApiResponse) => {});
   }
 
   filterPosts() {

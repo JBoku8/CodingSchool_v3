@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { API_URL } from 'src/config';
 import { IPost } from './common.data';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JsonPlaceholderService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   async getPosts(): Promise<IPost[]> {
     try {
@@ -16,5 +18,9 @@ export class JsonPlaceholderService {
     } catch (error: unknown) {
       return [];
     }
+  }
+
+  getPostsObservable(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(`${API_URL}/posts?_start=0&_end=20`);
   }
 }
