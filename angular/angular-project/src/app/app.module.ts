@@ -17,6 +17,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoCardComponent } from './todo/todo-card/todo-card.component';
 import { LogResponseInterceptor } from './common/log-response.interceptor';
 import { AddAuthTokenInterceptor } from './common/add-auth-token.interceptor';
+import { ArticleModule } from './article/article.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,13 @@ import { AddAuthTokenInterceptor } from './common/add-auth-token.interceptor';
     TodoComponent,
     TodoCardComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ArticleModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
