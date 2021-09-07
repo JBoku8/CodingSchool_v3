@@ -25,3 +25,14 @@ export interface INewsApiErrorResponse {
   code: string;
   message: string;
 }
+
+export interface IArticleCategory {
+  name: string;
+}
+
+// business entertainment general health science sports technology
+
+export enum CategoryEnum {
+  business = 'business',
+  entertainment = 'entertainment',
+}

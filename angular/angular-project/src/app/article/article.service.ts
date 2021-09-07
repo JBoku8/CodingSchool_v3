@@ -11,9 +11,11 @@ import { Observable } from 'rxjs';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
-  getTopHeadlineArticles(): Observable<INewsApiResponse> {
+  getTopHeadlineArticles(
+    queryString: URLSearchParams
+  ): Observable<INewsApiResponse> {
     return this.http.get<INewsApiResponse>(
-      `${NEWS_API_URL}/top-headlines?pageSize=12&category=technology`
+      `${NEWS_API_URL}/top-headlines?${queryString}`
     );
   }
 

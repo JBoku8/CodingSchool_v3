@@ -6,9 +6,10 @@ import { ArticlesComponent } from './articles/articles.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddHeaderInterceptor } from './add-header.interceptor';
 import { SingleArticleComponent } from './single-article/single-article.component';
+import { ArticleCardComponent } from './article-card/article-card.component';
 
 @NgModule({
-  declarations: [ArticlesComponent, SingleArticleComponent],
+  declarations: [ArticlesComponent, SingleArticleComponent, ArticleCardComponent],
   imports: [
     CommonModule,
     FormsModule,
