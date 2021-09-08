@@ -1,20 +1,52 @@
 <div class="row">
-  <div class="col-4 mb-3 px-2" *ngFor="let item of articles">
-    <div class="card w-100 shadow-sm">
-      <div class="card-header">
-        <a [href]="item.url" target="_blank">
-          <img [src]="item.urlToImage" [alt]="item.title" class="card-img-top" />
-        </a>
+  <div class="col-12">
+    <form #filterForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="mb-3 col-4">
+          <input
+            type="search"
+            class="form-control form-control-lg"
+            id="page"
+            name="page"
+            placeholder="Page number"
+            autocomplete="off"
+            (change)="onChange($event)"
+          />
+        </div>
+        <div class="mb-3 col-4">
+          <select
+            class="form-select form-select-lg mb-3"
+            name="category"
+            (change)="onChange($event)"
+          >
+            <option selected>Select Category</option>
+            <option [value]="c.name" *ngFor="let c of categories">
+              {{ c.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3 col-4">
+          <select
+            class="form-select form-select-lg mb-3"
+            name="pageSize"
+            (change)="onChange($event)"
+          >
+            <option selected>Select Range</option>
+            <option value="9">9</option>
+            <option value="18">18</option>
+            <option value="36">36</option>
+          </select>
+        </div>
       </div>
-      <div class="card-body">
-        <h2 class="card-title fs-5">{{ item.title }}</h2>
-        <h4 class="card-subtitle fs-6 text-muted">Author: {{ item.author }}</h4>
-        <p class="card-text card-description">
-          {{ item.description }}
-        </p>
-        <a [routerLink]="['/articles', item.title]" class="card-link">Read More</a>
-        <a [href]="item.url" target="_blank" class="card-link">Original Post</a>
-      </div>
-    </div>
+    </form>
+  </div>
+
+  <div class="row col-12 px-3">
+    <app-article-card
+      *ngFor="let item of articles"
+      [item]="item"
+      class="col-4 mb-3 px-2"
+    ></app-article-card>
   </div>
 </div>
