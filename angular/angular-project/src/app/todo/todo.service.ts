@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { API_URL } from 'src/config';
 import { ITodo, FindAllArgs } from './shared/todo';
 
@@ -6,7 +8,7 @@ import { ITodo, FindAllArgs } from './shared/todo';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   //
   async findAll(param: FindAllArgs = { start: 0, end: 10 }): Promise<ITodo[]> {
@@ -19,5 +21,9 @@ export class TodoService {
     } catch (e: any) {
       return [];
     }
+  }
+
+  findById(todoId: string): Observable<ITodo> {
+    return this.http.get<ITodo>(`${API_URL}/todos/${todoId}`);
   }
 }

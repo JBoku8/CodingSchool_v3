@@ -6,6 +6,8 @@ import { CounterComponent } from './counter/counter.component';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { TodoComponent } from './todo/todo.component';
+import { AuthGuard } from './auth/auth.guard';
+import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,17 @@ const routes: Routes = [
   {
     path: 'todo',
     component: TodoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'todo/:todoId',
+    component: SingleTodoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'articles',
+    loadChildren: () =>
+      import('./article/article.module').then((m) => m.ArticleModule),
   },
   {
     path: '',

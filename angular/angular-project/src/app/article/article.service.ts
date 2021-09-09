@@ -19,6 +19,12 @@ export class ArticleService {
     );
   }
 
+  getArticles(queryString: URLSearchParams): Observable<INewsApiResponse> {
+    return this.http.get<INewsApiResponse>(
+      `${NEWS_API_URL}/everything?${queryString}`
+    );
+  }
+
   getSingleArticle(titleString: string): Observable<INewsApiResponse> {
     return this.http.get<INewsApiResponse>(
       `${NEWS_API_URL}/top-headlines?q=${titleString}`
