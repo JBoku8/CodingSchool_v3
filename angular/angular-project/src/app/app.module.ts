@@ -18,6 +18,7 @@ import { TodoCardComponent } from './todo/todo-card/todo-card.component';
 import { LogResponseInterceptor } from './common/log-response.interceptor';
 import { AddAuthTokenInterceptor } from './common/add-auth-token.interceptor';
 import { ArticleModule } from './article/article.module';
+import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ArticleModule } from './article/article.module';
     FooterComponent,
     TodoComponent,
     TodoCardComponent,
+    SingleTodoComponent,
   ],
   imports: [
     BrowserModule,

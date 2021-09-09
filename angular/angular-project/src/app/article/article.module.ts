@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddHeaderInterceptor } from './add-header.interceptor';
 import { SingleArticleComponent } from './single-article/single-article.component';
 import { ArticleCardComponent } from './article-card/article-card.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 @NgModule({
   declarations: [ArticlesComponent, SingleArticleComponent, ArticleCardComponent],
@@ -16,12 +17,14 @@ import { ArticleCardComponent } from './article-card/article-card.component';
     HttpClientModule,
     RouterModule.forChild([
       {
-        path: 'articles',
-        component: ArticlesComponent,
-      },
-      {
         path: 'articles/:title',
         component: SingleArticleComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: '',
+        component: ArticlesComponent,
+        canActivate: [AuthGuard],
       },
     ]),
   ],

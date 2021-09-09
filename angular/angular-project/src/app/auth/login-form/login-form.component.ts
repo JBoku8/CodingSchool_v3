@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { SignInData } from './login-form.data';
 
@@ -15,30 +16,17 @@ export class LoginFormComponent implements OnInit {
     rememberMe: false,
   };
 
-  constructor(public $authService: AuthService) {}
+  constructor(public $authService: AuthService, private $router: Router) {}
 
   ngOnInit(): void {}
 
   async onSubmit(form: NgForm) {
     if (form.valid) {
-      // this.$authService.login(this.formData, {
-      //   onError: (error: Error) => {
-      //     console.log('ON ERROR', error);
-      //   },
-      //   onSuccess: (result: SignInResponse) => {
-      //     console.log('ON SUCCESS', result);
-      //   },
-      // });
-
-      // const result =
       await this.$authService.loginAsync(this.formData);
-      // this.$authService.loggedIn = !!result?.token;
 
-      // this.formData = {
-      //   password: '',
-      //   rememberMe: false,
-      //   email: '',
-      // };
+      if (this.$authService.loggedIn) {
+        this.$router.navigateByUrl(this.$authService.redirectUrl);
+      }
     }
   }
 }

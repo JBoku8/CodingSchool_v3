@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalStorageService } from '../common/local-storage.service';
 import { AUTH_TOKEN } from '../constants';
 
@@ -14,8 +15,9 @@ interface ServiceHandlers {
 })
 export class AuthService {
   public loggedIn: boolean = false;
+  public redirectUrl: string = '/';
 
-  constructor(private storageService: LocalStorageService) {
+  constructor(private storageService: LocalStorageService, private router: Router) {
     this.loggedIn = this.storageService.exists(AUTH_TOKEN);
   }
 
@@ -63,5 +65,6 @@ export class AuthService {
   logOut() {
     this.loggedIn = false;
     this.storageService.remove(AUTH_TOKEN);
+    this.router.navigate(['/']);
   }
 }
