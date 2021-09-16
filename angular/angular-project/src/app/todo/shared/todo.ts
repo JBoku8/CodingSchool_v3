@@ -6,8 +6,8 @@ export interface ITodo {
 }
 
 export type FindAllArgs = {
-  start: number;
-  end: number;
+  start?: number;
+  end?: number;
 };
 
 export type TodoStatus = 'completed' | 'isNotCompleted' | 'all';

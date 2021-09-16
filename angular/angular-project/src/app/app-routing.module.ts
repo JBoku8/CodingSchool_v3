@@ -8,6 +8,7 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { TodoComponent } from './todo/todo.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
+import { TodoResolver } from './todo/todo.resolver';
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
     path: 'todo',
     component: TodoComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      resolvedTodoList: TodoResolver,
+    },
   },
   {
     path: 'todo/:todoId',

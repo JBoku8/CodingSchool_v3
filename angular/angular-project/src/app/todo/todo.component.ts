@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FindAllArgs, ITodo, TodoStatus } from './shared/todo';
 import { TodoService } from './todo.service';
 
@@ -22,14 +23,15 @@ export class TodoComponent implements OnInit {
     this.onSearch();
   }
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  async loadData(params: FindAllArgs = { start: 0, end: 10 }) {
-    this.oldList = await this.todoService.findAll(params);
+  async loadData(params: FindAllArgs = { start: 0, end: 150 }) {
+    // this.oldList = await this.todoService.findAll(params);
+    this.oldList = this.route.snapshot.data['resolvedTodoList'];
     this.todoList = [...this.oldList];
 
     this.filterData();

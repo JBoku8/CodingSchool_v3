@@ -26,4 +26,10 @@ export class TodoService {
   findById(todoId: string): Observable<ITodo> {
     return this.http.get<ITodo>(`${API_URL}/todos/${todoId}`);
   }
+
+  getAll(param: FindAllArgs = { start: 0, end: 10 }): Observable<ITodo[]> {
+    return this.http.get<ITodo[]>(
+      `${API_URL}/todos?_start=${param.start}&_end=${param.end}`
+    );
+  }
 }
