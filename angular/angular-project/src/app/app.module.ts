@@ -19,6 +19,7 @@ import { LogResponseInterceptor } from './common/log-response.interceptor';
 import { AddAuthTokenInterceptor } from './common/add-auth-token.interceptor';
 import { ArticleModule } from './article/article.module';
 import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
+import { HttpCacheInterceptor } from './common/http-cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,11 @@ import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AddAuthTokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpCacheInterceptor,
       multi: true,
     },
   ],
