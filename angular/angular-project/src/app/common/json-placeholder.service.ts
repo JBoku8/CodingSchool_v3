@@ -23,4 +23,8 @@ export class JsonPlaceholderService {
   getPostsObservable(): Observable<IPost[]> {
     return this.http.get<IPost[]>(`${API_URL}/posts?_start=0&_end=20`);
   }
+
+  fakePost(): Observable<IPost> {
+    return this.http.post<IPost>(`${API_URL}/posts`, {});
+  }
 }

@@ -2,6 +2,10 @@
   <h1 class="text-success">Home Page</h1>
   <h4 *ngIf="loading">Please wait...</h4>
   <div class="">
+    <button class="btn btn-warning mb-3" (click)="onFakePost()">
+      Invalidate Global Cache
+    </button>
+
     <form #filterForm="ngForm" method="GET" action="" (ngSubmit)="onSubmit()">
       <div class="row mb-3">
         <div class="col-sm-12">

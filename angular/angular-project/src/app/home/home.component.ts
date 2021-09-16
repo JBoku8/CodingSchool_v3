@@ -57,6 +57,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.groupEnd();
   }
 
+  onFakePost() {
+    this.jsonPlaceHolderService.fakePost().subscribe((d) => {
+      console.log(d);
+    });
+  }
+
   onSubmit() {
     this.filterPosts();
   }
