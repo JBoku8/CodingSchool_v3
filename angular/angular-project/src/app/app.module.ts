@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +22,7 @@ import { AddAuthTokenInterceptor } from './common/add-auth-token.interceptor';
 import { ArticleModule } from './article/article.module';
 import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
 import { HttpCacheInterceptor } from './common/http-cache.interceptor';
+import { firebaseConfig } from 'firebaseConfig';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { HttpCacheInterceptor } from './common/http-cache.interceptor';
     AppRoutingModule,
     HttpClientModule,
     ArticleModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [
     {

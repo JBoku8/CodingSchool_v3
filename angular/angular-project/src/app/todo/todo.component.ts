@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FirebaseFirestoreService } from '../common/firebase-firestore.service';
 import { FindAllArgs, ITodo, TodoStatus } from './shared/todo';
 import { TodoService } from './todo.service';
 
@@ -23,7 +24,11 @@ export class TodoComponent implements OnInit {
     this.onSearch();
   }
 
-  constructor(private todoService: TodoService, private route: ActivatedRoute) {}
+  constructor(
+    private todoService: TodoService,
+    private route: ActivatedRoute,
+    private fireStore: FirebaseFirestoreService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -31,10 +36,15 @@ export class TodoComponent implements OnInit {
 
   async loadData(params: FindAllArgs = { start: 0, end: 150 }) {
     // this.oldList = await this.todoService.findAll(params);
-    this.oldList = this.route.snapshot.data['resolvedTodoList'];
-    this.todoList = [...this.oldList];
+    // this.oldList = this.route.snapshot.data['resolvedTodoList'];
+    // this.todoList = [...this.oldList];
 
-    this.filterData();
+    this.fireStore.findAll<ITodo>('todoCollection').subscribe((data) => {
+      console.log(data[0]);
+      // this.oldList = data;
+      // this.todoList = [...this.oldList];
+      // this.filterData();
+    });
   }
 
   onSearch() {

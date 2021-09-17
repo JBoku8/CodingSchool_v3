@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IPost } from '../common/common.data';
+import { FirebaseFirestoreService } from '../common/firebase-firestore.service';
 import { JsonPlaceholderService } from '../common/json-placeholder.service';
 
 @Component({
@@ -23,10 +24,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.filterPosts();
   }
 
-  constructor(private jsonPlaceHolderService: JsonPlaceholderService) {}
+  constructor(
+    private jsonPlaceHolderService: JsonPlaceholderService,
+    private fireStore: FirebaseFirestoreService
+  ) {}
 
   ngOnInit(): void {
-    this.loadData();
+    // this.loadData();
+    this.fireStore.findAll('todoCollection').subscribe((data) => {
+      console.log(data);
+      this.loading = false;
+    });
   }
 
   async loadData() {

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-v3": {
+      "hosting": {
+        "angular-project": [
+          "angular-v3"
+        ]
+      }
+    }
+  }
+}
