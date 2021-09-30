@@ -9,6 +9,7 @@ import { TodoComponent } from './todo/todo.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
 import { TodoResolver } from './todo/todo.resolver';
+import { RegisterFormComponent } from './auth/register-form/register-form.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: LoginFormComponent,
+  },
+  {
+    path: 'sign-up',
+    component: RegisterFormComponent,
   },
   {
     path: 'hello-world',

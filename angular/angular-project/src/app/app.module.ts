@@ -23,6 +23,7 @@ import { ArticleModule } from './article/article.module';
 import { SingleTodoComponent } from './todo/single-todo/single-todo.component';
 import { HttpCacheInterceptor } from './common/http-cache.interceptor';
 import { firebaseConfig } from 'firebaseConfig';
+import { RegisterFormComponent } from './auth/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { firebaseConfig } from 'firebaseConfig';
     TodoComponent,
     TodoCardComponent,
     SingleTodoComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,

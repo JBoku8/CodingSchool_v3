@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { FirebaseAuthService } from '../firebase-auth.service';
 import { SignInData } from './login-form.data';
 
 @Component({
@@ -16,17 +17,21 @@ export class LoginFormComponent implements OnInit {
     rememberMe: false,
   };
 
-  constructor(public $authService: AuthService, private $router: Router) {}
+  constructor(
+    public $authService: AuthService,
+    // private $router: Router,
+    private fireBaseAuth: FirebaseAuthService
+  ) {}
 
   ngOnInit(): void {}
 
   async onSubmit(form: NgForm) {
     if (form.valid) {
-      await this.$authService.loginAsync(this.formData);
-
-      if (this.$authService.loggedIn) {
-        this.$router.navigateByUrl(this.$authService.redirectUrl);
-      }
+      this.fireBaseAuth.signIn(this.formData);
+      // await this.$authService.loginAsync(this.formData);
+      // if (this.$authService.loggedIn) {
+      //   this.$router.navigateByUrl(this.$authService.redirectUrl);
+      // }
     }
   }
 }

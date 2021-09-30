@@ -53,8 +53,13 @@
                 >Sign In</a
               >
             </li>
-            <li class="nav-item" *ngIf="authService.loggedIn">
-              <button class="btn btn-primary" (click)="authService.logOut()">
+            <li class="nav-item" *ngIf="!authService.loggedIn">
+              <a class="nav-link" routerLink="/sign-up" routerLinkActive="active"
+                >Sign Up</a
+              >
+            </li>
+            <li class="nav-item" *ngIf="fbAuth.currentUser">
+              <button class="btn btn-primary" (click)="fbAuth.signOut()">
                 Sign Out
               </button>
             </li>
