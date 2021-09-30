@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FirebaseAuthService } from '../auth/firebase-auth.service';
 
 @Component({
   selector: 'app-counter',
@@ -21,10 +22,16 @@ export class CounterComponent implements OnInit {
   decoration = 'underline';
   styles = 'background-color: lightblue; text-decoration: underline';
 
-  constructor() {}
+  constructor(private fbAuth: FirebaseAuthService) {}
 
   ngOnInit(): void {
     this.count = this.initialValue;
+
+    // this.fbAuth.currentUser.subscribe((data) => {
+    //   data.getIdTokenResult().then((token: string) => {
+    //     console.log(token);
+    //   });
+    // });
   }
 
   onAdd() {

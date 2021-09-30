@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public fbAuth: FirebaseAuthService) {}
 
   ngOnInit(): void {}
 }
